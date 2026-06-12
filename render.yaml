@@ -1,0 +1,23 @@
+﻿# Blueprint Render — dépôt serveur autonome
+# Dashboard Render → New → Blueprint → connecter ce dépôt Git.
+services:
+  - type: web
+    name: saas-game-dev-social
+    runtime: node
+    plan: free
+    region: frankfurt
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      # Décommentez avec un disque persistant (plan payant) pour conserver SQLite :
+      # - key: SOCIAL_DATA_DIR
+      #   value: /var/data/social
+    # disk:
+    #   name: social-data
+    #   mountPath: /var/data
+    #   sizeGB: 1
