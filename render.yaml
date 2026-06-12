@@ -1,15 +1,17 @@
-﻿# Blueprint Render — dépôt serveur autonome
-# Dashboard Render → New → Blueprint → connecter ce dépôt Git.
+﻿# Blueprint Render — dépôt serveur AUTONOME (racine = ce dossier)
+# IMPORTANT : ne pas définir de "Root Directory" dans le dashboard Render.
 services:
   - type: web
     name: saas-game-dev-social
     runtime: node
     plan: free
     region: frankfurt
-    buildCommand: npm ci
+    buildCommand: npm run render-build
     startCommand: npm start
     healthCheckPath: /api/health
     envVars:
+      - key: NODE_VERSION
+        value: "20"
       - key: NODE_ENV
         value: production
       - key: HOST
