@@ -308,3 +308,4 @@ export function syncFriendNicknamesForUser(userId, displayName) {
     WHERE friend_user_id = ?
   `).run(displayName, userId);
 }
+
